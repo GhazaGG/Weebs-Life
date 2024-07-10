@@ -1,22 +1,28 @@
-import AnimeList from "../app/components/AnimeList"
+import Showcase from "./components/Showcase"
+import AnimeList from "./components/Showcase"
+import Image from 'next/image'
+
+const TopAnime = () => {
+  return(
+    <Showcase endpoint="top/anime"/>
+  )
+}
+
 
 const Home = async () => {
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`)
-  const anime = await response.json()
-
-
   return (
-    <div>
-      <div className="grid grid-cols-3">
-        {anime.data.map((data: any) => {
-          return (
-            <div key={data.mal_id}>
-              <AnimeList title={data.title} images={data.images.webp.image_url} />
-            </div>
-          )
-        })}
-        <p>test</p>
+    <div className="font-Montserrat w-full flex justify-center">
+      <div className="w-3/4">
+        <div className=" text-white font-bold  h-56  bg-utama text-5xl flex flex-col items-center justify-center">
+          <h1>Welcome To Weebs Life!</h1>
+          <p className="text-sm font-light pt-2">Immerse yourself in the ultimate anime experience with Weebs Life.</p>
+        </div>
+        <div className="flex justify-between mt-5 text-utama">
+          <h3 className="font-semibold text-md">Top Airing Anime</h3>
+          <p className="text-sm">View More</p>
+        </div>
+        <TopAnime />
       </div>
     </div>
   );
