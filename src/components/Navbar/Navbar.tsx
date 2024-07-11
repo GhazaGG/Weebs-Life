@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const Navbar = () => {
     return (
-        <header className="flex justify-between px-16 py-3 text-sky-950" >
+        <header className="fixed w-full flex justify-between px-16 py-3 text-sky-950 bg-white" >
             <Link href='/' className="text-2xl font-extrabold text-sky-700">Weebs Life</Link>
             <nav className="">
                 <Link href='/anime' className="mx-3 font-bold">Anime</Link>
