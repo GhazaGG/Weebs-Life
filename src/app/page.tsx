@@ -1,22 +1,38 @@
 import TopAninmeShow from "@/components/Showcase"
-import RecomendedAnime from "@/components/Showcase"
 import Header from "@/components/Header";
-import {fetchTopAnime, fetchRecomendedAnime} from "@/utils/api";
+import InputSearch from "@/components/InputSearch/InputSearch";
+import {fetchTopAnime, fetchRecomendedAnime, fetchAnimeNews} from "@/utils/api";
 import Link from "next/link";
-
+import NewsShowcase from "@/components/News/NewsShowcase"
+import VerticalShowcase from "@/components/Showcase/VerticalShowcase"
 
 const Home = async () => {
 
-  const [topAnime, recomendedAnime] = await Promise.all([fetchTopAnime(), fetchRecomendedAnime()])
+
+  const popularAnime = await fetchTopAnime()
+  const animeNews = await fetchAnimeNews(1)
+
 
   return (
       <>
         <Header />
+
+        <div className=" mt-3 items-center">
+          <InputSearch content="Manga"/>
+        </div>
+
         <div className="flex justify-between mt-5 text-utama">
           <h3 className="font-semibold text-md">Most Popular Anime</h3>
-          <Link href={'/TopAnime'} className="text-sm hover:underline">View More</Link>
+          <Link href={'/Anime/TopAnime'} className="text-sm hover:underline">View More</Link>
         </div>
-        <TopAninmeShow api={topAnime} place="homepage"/>
+        <TopAninmeShow api={popularAnime} place="homepage"/>
+
+        <div className="flex">
+          <div className="w-3/4">
+            <NewsShowcase api={animeNews}/>  
+          </div>
+          <VerticalShowcase />
+        </div>
       </>
   );
 }

@@ -1,4 +1,4 @@
-import TopAnime from '@/app/TopAnime/page';
+import TopAnime from '@/app/Anime/PopularAnime/page';
 import Image from 'next/image'
 
 interface ShowcaseProps {

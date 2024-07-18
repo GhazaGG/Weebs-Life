@@ -3,7 +3,11 @@ import { MagnifyingGlass } from "@phosphor-icons/react"
 import { useRouter } from "next/navigation"
 import { useRef } from "react"
 
-const InputSearch = () => {
+interface InputProps{
+    content: string
+}
+
+const InputSearch  : React.FC<InputProps> = ({content}) => {
     const searchRef = useRef<HTMLInputElement>(null)
     const router = useRouter()
 
@@ -11,15 +15,21 @@ const InputSearch = () => {
         event.preventDefault()
         if(searchRef.current){
             const keyword = searchRef.current.value
-            router.push(`/search/${keyword}`)
+            if(content == "Anime"){
+                router.push(`/search/Anime/${keyword}`)
+            }else if(content == "Manga"){
+                router.push(`/search/Manga/${keyword}`)
+            }else{
+                alert(`${content} is not available`)
+            }
         }
     }
 
     return (
-        <div className="relative">
+        <div className="relative w-full">
             <input 
             placeholder="Search Anime... " 
-            className="rounded-lg w-full p-1 border-utama" 
+            className="rounded-lg w-full p-1 border-2 border-utama" 
             ref={searchRef}
             />
             <button onClick={searcHandler}>
