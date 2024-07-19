@@ -15,12 +15,10 @@ interface NewsProps{
 }
 
 const NewsShowcase: React.FC<NewsProps> = async (api) => {
-    let test = api.data
+    // let test = api.data
     return (
         <div>
-            {api.data.map((anime:any) => {
-                
-            })}
+            test
         </div>
     )
 }   

@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchedKey from "@/components/Showcase"
 import Header from '@/components/Header'
+import InputSearch from '@/components/InputSearch/InputSearch'
 
 
 
@@ -12,6 +13,9 @@ const Page = async ({params}) => {
   return (
     <div>
       <Header  title={`Search for ${keyword}`}/>
+      <div className=" mt-3 mb-5 items-center">
+          <InputSearch content="Anime"/>
+      </div>
       <SearchedKey api={searchedKey} />
     </div>
   )

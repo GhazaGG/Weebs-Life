@@ -18,12 +18,12 @@ const Home = async () => {
         <Header />
 
         <div className=" mt-3 items-center">
-          <InputSearch content="Manga"/>
+          <InputSearch content="Anime"/>
         </div>
 
         <div className="flex justify-between mt-5 text-utama">
           <h3 className="font-semibold text-md">Most Popular Anime</h3>
-          <Link href={'/Anime/TopAnime'} className="text-sm hover:underline">View More</Link>
+          <Link href={'/Anime/PopularAnime'} className="text-sm hover:underline">View More</Link>
         </div>
         <TopAninmeShow api={popularAnime} place="homepage"/>
 

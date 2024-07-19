@@ -57,16 +57,16 @@ export const fetchRecomendedAnime = async()=> {
     }
 }
 
-// export const fetchAnimeBySearch = async () => {
-//     try {
-//         const response = await fetch(`${baseUrl}/anime?q=`)
-//         if(!response.ok){
-//             throw new Error('Faild to fetch data')
-//         }
-//         const data = response.json()
-//         return data
-//     } catch (error) {
-//         console.error('Error fetching top anime:', error);
-//         return [];
-//     }
-// }
+export const fetchAnimeBySearch = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/anime?q=`)
+        if(!response.ok){
+            throw new Error('Faild to fetch data')
+        }
+        const data = response.json()
+        return data
+    } catch (error) {
+        console.error('Error fetching top anime:', error);
+        return [];
+    }
+}
