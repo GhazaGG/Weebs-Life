@@ -1,4 +1,8 @@
+
 import { Module } from "module"
+
+
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 export interface Anime {
     mal_id: number;
     title: string;
@@ -9,11 +13,29 @@ export interface Anime {
     };
 }
 
+
+
 export interface AnimeResponse {
     data: Anime[];
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+export interface Recommendation {
+    mal_id: number;
+    title: string;
+    images: {
+        jpg: {
+            image_url: string;
+        };
+    };
+}
+
+export interface RecommendationResponse {
+    data: Recommendation[];
+    pagination: {
+        last_visible_page: number;
+        has_next_page: boolean;
+    };
+}
 
 export const fetchTopAnime = async()=> {
     try {
@@ -45,7 +67,7 @@ export const fetchAnimeNews = async (id: number) => {
 
 export const fetchRecomendedAnime = async()=> {
     try {
-        const response = await fetch(`${baseUrl}/recommendations/anime`)
+        const response = await fetch(`${baseUrl}/recommendations/anime?limit=5`)
         if(!response.ok){
             throw new Error('Faild to fetch data')
         }
@@ -60,6 +82,20 @@ export const fetchRecomendedAnime = async()=> {
 export const fetchAnimeBySearch = async () => {
     try {
         const response = await fetch(`${baseUrl}/anime?q=`)
+        if(!response.ok){
+            throw new Error('Faild to fetch data')
+        }
+        const data = response.json()
+        return data
+    } catch (error) {
+        console.error('Error fetching top anime:', error);
+        return [];
+    }
+}
+
+export const fetchAnimebyId  = async ({id}: any) => {
+    try {
+        const response = await fetch(`${baseUrl}/anime/${id}`)
         if(!response.ok){
             throw new Error('Faild to fetch data')
         }

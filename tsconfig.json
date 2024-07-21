@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/News/NewsShowcase.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/News/NewsShowcase.tsx", "src/app/Anime/[id]/page.jsx", "src/components/Showcase/index.tsx", "src/components/Showcase/VerticalShowcase.jsx"],
   "exclude": ["node_modules"]
 }

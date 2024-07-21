@@ -1,5 +1,6 @@
 import TopAnime from '@/app/Anime/PopularAnime/page';
 import Image from 'next/image'
+import Link from 'next/link';
 
 interface ShowcaseProps {
   api: {
@@ -26,15 +27,17 @@ const Showcase : React.FC<ShowcaseProps>= ({api, place= 'default'}) => {
   try {
     return (
       <div>
-        <div className="grid grid-cols-5 gap-2 w-full border-t border-utama">
+        <div className="grid grid-cols-5 gap-2">
           {topAnime.map((data: any) => {
             return (
-              <div key={data.mal_id} className='w-41 h-100 overflow-hidden pt-2'>
-                <div className='text-center '>
-                  <Image src={data.images.webp.image_url} alt='...' width={300} height={400}  className='w-full max-h-96 object-cover'/>
-                  <h1 className='font-semibold'>{data.title}</h1>
+              <Link href={`/Info/${data.mal_id}`}>              
+                <div key={data.mal_id} className='h-100 overflow-hidden pt-2'>
+                  <div className='text-center '>
+                    <Image src={data.images.webp.image_url} alt='...' width={1080} height={1080}  className='w-44 max-h-60  object-cover rounded-md'/>
+                    <h1 className='text-sm '>{data.title}</h1>
+                  </div>
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>
